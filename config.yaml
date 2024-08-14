@@ -1,0 +1,18 @@
+# This defines the configuration of this application. Each defines a (sub) component that is loaded and
+# used for this application. These components can provide specific functionality and define how different
+# files in your app are loaded.
+rest: true  # This provides the HTTP REST interface for all exported resources
+graphqlSchema:  # These reads GraphQL schemas to define the schema of database/tables/attributes.
+  files: '*.graphql' # looks for these files
+  # path: / # exported queries are on the root path by default
+jsResource: # Loads JavaScript modules such that their exports are exported as resources
+  files: resources.js # the entry module for resources
+  # path: / # exported resources are on the root path by default, like http://server/resource-name
+fastifyRoutes: # This loads files that define fastify routes using fastify's auto-loader
+  files: routes/*.js # specify the location of route definition modules
+  path: . # relative to the app-name, like  http://server/app-name/route-name
+static: # This allows static files to be directly accessible
+  root: web
+  files: web/**
+  # login
+  #path: /

@@ -1,0 +1,15 @@
+type Snippet @table @export {
+    id: ID @primaryKey 
+    language: String!
+    text: String!
+    scores: [Score] @relationship(from: "snippetId")
+}
+
+type Score @table @export {
+    id: ID @primaryKey 
+    time: Float!
+    snippetId: ID @indexed
+    snippet: Snippet @relationship(from: "snippetId")
+    cpm: Float!
+    region: String
+}
